@@ -34,7 +34,7 @@ Will return the download urls
 | Parameter | Key    | Type   |
 | --------- | ------ | ------ |
 | query     | folder | string |
-| query     | folder | string |
+| query     | file | string |
 
 ### List
 
