@@ -1,12 +1,10 @@
+const IsAuth = require("../middlewares/isAuth.js");
+
 const FileService = require("../services/FileService");
 
 module.exports = class ViewRoute {
   static init(app) {
-    app.get("/", (req, res) => {
-      res.json({ ok: "ok" });
-      // res.render
-    });
-    app.post("/upload", (req, res) => {
+    app.post("/upload", IsAuth, (req, res) => {
       FileService.upload(req, res);
     });
     app.get("/d/:folder/:file", (req, res) => {
