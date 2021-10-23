@@ -65,4 +65,4 @@ Returns list of files for the given user
 | Parameter | Key   | Type   |
 | --------- | ----- | ------ |
 | header    | token | string |
-| path      | filename | string |
+| query     | filename | string |
