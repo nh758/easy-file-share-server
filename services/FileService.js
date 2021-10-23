@@ -32,7 +32,7 @@ module.exports = class FileService {
           return res.status(500).send(err);
         }
       });
-      const fileUrl = `${req.host}/d/${folder}/${file.name}`;
+      const fileUrl = `${req.hostname}/d/${folder}/${file.name}`;
       urls[key] = fileUrl;
     });
 
@@ -50,5 +50,31 @@ module.exports = class FileService {
       }
     });
     return res;
+  }
+
+  static list(req, res) {
+    //Check identity (WIP)
+    // const user = AuthService.getUserInfo(req.headers.token);
+    // if (!user || !user.hasOwnProperty("folder")) {
+    //   return res.status(400).send("Unauthorized");
+    // }
+    // const folder = user.folder;
+    const folder = "test";
+    const folderPath = path.join(__dirname, "../uploads", folder);
+
+    if (!fs.existsSync(folderPath)) {
+      return res.status(400).send("Folder not found");
+    }
+
+    const files = fs.readdirSync(folderPath);
+    const fileList = [];
+    files.forEach(file => {
+      fileList.push({
+        file: file,
+        url: `${req.hostname}/d/${folder}/${file.name}`
+      });
+    });
+
+    return res.status(200).send(fileList);
   }
 };

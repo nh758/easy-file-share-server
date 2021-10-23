@@ -19,3 +19,20 @@ Will return the download urls
 ### Download
 
 `/d/:folder/:file`
+
+### List
+
+`/list`
+
+Requires Authorization
+
+Returns list of files for the given user
+
+```
+[
+  {
+    name: 'file name',
+    url: 'download url'
+  },
+]
+```
