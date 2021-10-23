@@ -71,7 +71,7 @@ module.exports = class FileService {
     files.forEach(file => {
       fileList.push({
         file: file,
-        url: `${req.hostname}/d/${folder}/${file.name}`
+        url: `${req.hostname}/d/${folder}/${file}`
       });
     });
 

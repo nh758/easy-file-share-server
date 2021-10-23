@@ -30,9 +30,13 @@ Returns list of files for the given user
 
 ```
 [
-  {
-    name: 'file name',
-    url: 'download url'
-  },
+    {
+        "file": "img2.png",
+        "url": "localhost/d/test/img2.png"
+    },
+    {
+        "file": "img3.png",
+        "url": "localhost/d/test/img3.png"
+    }
 ]
 ```
