@@ -1,18 +1,16 @@
 const AuthService = require("../services/AuthService.js");
 
 module.exports = async (req, res, next) => {
+  let token;
 
-	let token;
+  if (req.headers && req.headers.token) {
+    token = req.headers.token;
+  }
 
-	 if (req.body && req.body.token) {
-		token = req.body.token;
-	}
-
-	let userInfo = await AuthService.getUserInfo(token);
-	if (userInfo) {
-		next();
-	}
-	else {
-		res.status(403).json({ message: "Unauthenticated" });
-	}
+  let userInfo = await AuthService.getUserInfo(token);
+  if (userInfo) {
+    next();
+  } else {
+    res.status(403).json({ message: "Unauthenticated" });
+  }
 };

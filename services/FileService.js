@@ -5,14 +5,12 @@ const AuthService = require("./AuthService.js");
 module.exports = class FileService {
   static get() {}
 
-  static upload(req, res) {
-    //Check identity (WIP)
-    // const user = AuthService.getUserInfo(req.headers.token);
-    // if (!user || !user.hasOwnProperty("folder")) {
-    //   return res.status(400).send("Unauthorized");
-    // }
-    // const folder = user.folder;
-    const folder = "test";
+  static async upload(req, res) {
+    const user = await AuthService.getUserInfo(req.headers.token);
+    if (!user || !user.hasOwnProperty("folderName")) {
+      return res.status(400).send("Unauthorized");
+    }
+    const folder = user.folderName;
 
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send("No files were uploaded.");
@@ -52,14 +50,13 @@ module.exports = class FileService {
     return res;
   }
 
-  static list(req, res) {
-    //Check identity (WIP)
-    // const user = AuthService.getUserInfo(req.headers.token);
-    // if (!user || !user.hasOwnProperty("folder")) {
-    //   return res.status(400).send("Unauthorized");
-    // }
-    // const folder = user.folder;
-    const folder = "test";
+  static async list(req, res) {
+    const user = await AuthService.getUserInfo(req.headers.token);
+    console.log(user);
+    if (!user || !user.hasOwnProperty("folderName")) {
+      return res.status(400).send("Unauthorized");
+    }
+    const folder = user.folderName;
     const folderPath = path.join(__dirname, "../uploads", folder);
 
     if (!fs.existsSync(folderPath)) {

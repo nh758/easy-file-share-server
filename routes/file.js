@@ -10,6 +10,6 @@ module.exports = class ViewRoute {
     });
     app.post("/upload", IsAuth, (req, res) => FileService.upload(req, res));
     app.get("/d/:folder/:file", (req, res) => FileService.download(req, res));
-    app.get("/list", (req, res) => FileService.list(req, res));
+    app.get("/list", IsAuth, (req, res) => FileService.list(req, res));
   }
 };
