@@ -58,3 +58,11 @@ Returns list of files for the given user
     }
 ]
 ```
+### Delete
+
+`/delete/:filename`
+
+| Parameter | Key   | Type   |
+| --------- | ----- | ------ |
+| header    | token | string |
+| path      | filename | string |

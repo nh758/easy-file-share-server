@@ -11,5 +11,6 @@ module.exports = class ViewRoute {
     app.post("/upload", IsAuth, (req, res) => FileService.upload(req, res));
     app.get("/d/:folder/:file", (req, res) => FileService.download(req, res));
     app.get("/list", IsAuth, (req, res) => FileService.list(req, res));
+    app.delete("/delete/:filename", IsAuth, (req, res) => FileService.delete(req, res));
   }
 };
