@@ -2,13 +2,24 @@
 
 ## API
 
+### Login
+
+`/login`
+
+| Parameter | Key      | Type   |
+| --------- | -------- | ------ |
+| body      | passcode | String |
+
+Returns token
+
 ### Upload
 
 `/upload`
 
-Requires Authorization
-
-Expects form-data files in the request body
+| Parameter | Key   | Type   |
+| --------- | ----- | ------ |
+| header    | token | string |
+| body      | any   | file   |
 
 Will return the download urls
 
@@ -20,11 +31,18 @@ Will return the download urls
 
 `/d/:folder/:file`
 
+| Parameter | Key    | Type   |
+| --------- | ------ | ------ |
+| query     | folder | string |
+| query     | folder | string |
+
 ### List
 
 `/list`
 
-Requires Authorization
+| Parameter | Key   | Type   |
+| --------- | ----- | ------ |
+| header    | token | string |
 
 Returns list of files for the given user
 
