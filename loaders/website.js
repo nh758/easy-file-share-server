@@ -5,7 +5,7 @@ const path = require("path");
 const fileUpload = require("express-fileupload");
 
 const authRoute = require("../routes/auth.js");
-const viewRoute = require("../routes/view.js");
+const fileRoute = require("../routes/file.js");
 
 module.exports = class WebLoader {
   static init(app) {
@@ -45,7 +45,7 @@ module.exports = class WebLoader {
   }
 
   static initRoutes(app) {
-    viewRoute.init(app);
+    fileRoute.init(app);
     authRoute.init(app);
   }
 };

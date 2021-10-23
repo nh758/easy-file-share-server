@@ -1,4 +1,5 @@
 const jwt = require("jwt-simple");
+const UserModel = require("../models/user.js");
 
 module.exports = class AuthService {
 	/**
@@ -13,11 +14,10 @@ module.exports = class AuthService {
 		const payload = jwt.decode(token, process.env.JWT_SECRET);
 		const id = payload.sub;
 
-		const user = null;
-		// TODO: find the user info from DB
-		// const user = await User.findOne({
-		// 	where: { id: id }
-		// });
+		// find the user info from DB
+		const user = await UserModel.findOne({
+			where: { id: id }
+		});
 
 		if (!user) return;
 
@@ -34,12 +34,10 @@ module.exports = class AuthService {
 	static async getToken(passcode) {
 		if (!passcode) return;
 
-
-		const user = null;
-		// TODO : get the user info from DB
-		// const user = await User.findOne({
-		// 	where: { passcode: passcode }
-		// });
+		// get the user info from DB
+		const user = await UserModel.findOne({
+			where: { passcode: passcode }
+		});
 
 		// Invalid
 		if (!user) return;
@@ -54,4 +52,4 @@ module.exports = class AuthService {
 
 		return jwt.encode(payload, process.env.JWT_SECRET);
 	}
-}
+};
