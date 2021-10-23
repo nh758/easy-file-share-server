@@ -9,7 +9,7 @@ module.exports = class AuthRoute {
 
 			// valid passcode
 			if (token) {
-				res.send(200, token);
+				res.status(200).send(token);
 			}
 			// invalid
 			else {
