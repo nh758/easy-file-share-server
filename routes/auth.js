@@ -1,6 +1,6 @@
 const AuthService = require("../services/AuthService.js");
 
-module.exports = class ViewRoute {
+module.exports = class AuthRoute {
 	static init(app) {
 
 		app.post('/login', async (req, res) => {
