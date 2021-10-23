@@ -19,7 +19,6 @@ module.exports = class FileService {
     }
 
     const files = req.files;
-    console.log(files);
     const uploadDir = path.join(__dirname, "../uploads", folder);
 
     // Make the director if it's missing
@@ -33,10 +32,23 @@ module.exports = class FileService {
           return res.status(500).send(err);
         }
       });
-      const fileUrl = `TODO url...${file.name}`;
+      const fileUrl = `${req.host}/d/${folder}/${file.name}`;
       urls[key] = fileUrl;
     });
 
     return res.status(200).send(urls);
+  }
+
+  static download(req, res) {
+    const { folder, file } = req.params;
+    const downloadPath = path.join(__dirname, "../uploads", folder, file);
+    res.download(downloadPath, file, err => {
+      if (err) {
+        res.status(500).send({
+          message: "File Not Found"
+        });
+      }
+    });
+    return res;
   }
 };

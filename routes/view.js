@@ -9,5 +9,8 @@ module.exports = class ViewRoute {
     app.post("/upload", (req, res) => {
       FileService.upload(req, res);
     });
+    app.get("/d/:folder/:file", (req, res) => {
+      FileService.download(req, res);
+    });
   }
 };
