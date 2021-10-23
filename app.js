@@ -12,3 +12,4 @@ WebLoader.init(app);
 
 // Database
 DBLoader.init();
+DBLoader.db.sequelize.sync();
