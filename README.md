@@ -4,7 +4,7 @@
 
 ### Login
 
-`/login`
+`POST /login`
 
 | Parameter | Key      | Type   |
 | --------- | -------- | ------ |
@@ -14,7 +14,7 @@ Returns token
 
 ### Upload
 
-`/upload`
+`POST /upload`
 
 | Parameter | Key   | Type   |
 | --------- | ----- | ------ |
@@ -29,16 +29,16 @@ Will return the download urls
 
 ### Download
 
-`/d/:folder/:file`
+`GET /d/:folder/:file`
 
 | Parameter | Key    | Type   |
 | --------- | ------ | ------ |
 | query     | folder | string |
-| query     | folder | string |
+| query     | file | string |
 
 ### List
 
-`/list`
+`GET /list`
 
 | Parameter | Key   | Type   |
 | --------- | ----- | ------ |
