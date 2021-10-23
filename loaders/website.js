@@ -3,6 +3,7 @@ const formData = require("express-form-data");
 const os = require("os");
 const path = require('path');
 
+const authRoute = require("../routes/auth");
 const viewRoute = require("../routes/view.js");
 
 module.exports = class WebLoader {
@@ -43,5 +44,6 @@ module.exports = class WebLoader {
 
 	static initRoutes(app) {
 		viewRoute.init(app);
+		authRoute.init(app);
 	}
 };
