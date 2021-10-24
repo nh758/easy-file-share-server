@@ -3,8 +3,6 @@ const path = require("path");
 const AuthService = require("./AuthService.js");
 
 module.exports = class FileService {
-  static get() {}
-
   static async upload(req, res) {
     const user = await AuthService.getUserInfo(req.headers.token);
     if (!user || !user.hasOwnProperty("folderName")) {

@@ -7,7 +7,14 @@ module.exports = async (req, res, next) => {
     token = req.headers.token;
   }
 
-  let userInfo = await AuthService.getUserInfo(token);
+  let userInfo;
+
+  try {
+    userInfo = await AuthService.getUserInfo(token);
+  } catch (e) {
+    return res.status(403).json({ message: e.message });
+  }
+
   if (userInfo) {
     next();
   } else {
