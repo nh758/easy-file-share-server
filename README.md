@@ -1,5 +1,7 @@
 # Easy File Share server
 
+![Tests](https://github.com/nh758/easy-file-share-server/actions/workflows/runTest.yml/badge.svg)
+
 ## API
 
 ### Login
