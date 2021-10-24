@@ -80,14 +80,8 @@ module.exports = class FileService {
       return res.status(400).send("Unauthorized");
     }
     const folder = user.folderName;
-
     const deleteFile = req.params.filename;
-
     const deletePath = path.join(__dirname, "../uploads", folder, deleteFile);
-
-    // Make the director if it's missing
-    if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
-    const urls = {};
 
     fs.rmSync(deletePath);
 
