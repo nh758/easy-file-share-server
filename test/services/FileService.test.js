@@ -77,7 +77,7 @@ describe("FileService", function() {
         file: "file.txt"
       }
     };
-    const expectedPath = /uploads\\test\\file\.txt/;
+    const expectedPath = /uploads[\\|\/]test[\\|\/]file\.txt/;
     const res = mockResponse();
     await FileService.download(req, res);
     const download = res.download.getCall(0).args[0];
