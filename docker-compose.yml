@@ -12,6 +12,10 @@ services:
       - db
     environment:
       DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: testUpload
+      DB_USER: root
+      DB_PASSWORD: root
     working_dir: /app
     command: npm run startWhenDbReady
 

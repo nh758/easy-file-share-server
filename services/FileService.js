@@ -79,7 +79,12 @@ module.exports = class FileService {
     const deleteFile = req.params.filename;
     const deletePath = path.join(__dirname, "../uploads", folder, deleteFile);
 
-    fs.rmSync(deletePath);
+    try {
+      fs.rmSync(deletePath);
+    }
+    catch(err) {
+      console.log(err);
+    }
 
     return res.status(200).send({ message: "The file was deleted." });
   }
