@@ -34,7 +34,7 @@ Will return the download urls
 | Parameter | Key    | Type   |
 | --------- | ------ | ------ |
 | query     | folder | string |
-| query     | file | string |
+| query     | file   | string |
 
 ### List
 
@@ -58,11 +58,12 @@ Returns list of files for the given user
     }
 ]
 ```
+
 ### Delete
 
-`/delete/:filename`
+`DELETE /delete/:filename`
 
-| Parameter | Key   | Type   |
-| --------- | ----- | ------ |
-| header    | token | string |
+| Parameter | Key      | Type   |
+| --------- | -------- | ------ |
+| header    | token    | string |
 | query     | filename | string |
