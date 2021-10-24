@@ -1,0 +1,30 @@
+version: "3.2"
+
+services:
+  api:
+    image: node
+    container_name: easy-file-share-server-api
+    ports:
+      - "7777:7777"
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+    working_dir: /app
+    command: npm start
+
+  db:
+    image: mariadb
+    container_name: easy-file-share-server-db
+    volumes:
+    - ./data/db:/data/db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=testUpload
+      - MYSQL_ROOT_HOST=%
+    entrypoint:
+      sh -c "
+        echo 'CREATE DATABASE IF NOT EXISTS testUpload;' > /docker-entrypoint-initdb.d/init.sql;
+        /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
