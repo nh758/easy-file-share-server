@@ -13,7 +13,7 @@ services:
     environment:
       DB_HOST: db
     working_dir: /app
-    command: npm start
+    command: npm run startWhenDbReady
 
   db:
     image: mariadb

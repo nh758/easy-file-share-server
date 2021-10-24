@@ -6,20 +6,28 @@ const { Sequelize } = require('sequelize');
 const UserModel = require("../models/user.js")
 
 module.exports = class DatabaseLoader {
+	static getDB() {
+		if (this.db == null) {
+			const sequelize = new Sequelize(
+				process.env.DB_NAME,
+				process.env.DB_USER,
+				process.env.DB_PASSWORD,
+				{
+					host: process.env.DB_HOST,
+					port: process.env.DB_PORT,
+					dialect: 'mysql'
+				}
+			);
+
+			this.db = sequelize;
+		}
+
+		return this.db;
+	}
+
 	static init() {
 		// Config Database here.
-		const sequelize = new Sequelize(
-			process.env.DB_NAME,
-			process.env.DB_USER,
-			process.env.DB_PASSWORD,
-			{
-				host: process.env.DB_HOST,
-				port: process.env.DB_PORT,
-				dialect: 'mysql'
-			}
-		);
-
-		this.db = sequelize;
+		this.getDB();
 
 		// fs.readdir("./models", (err, files) => {
 		// 	if (err) {

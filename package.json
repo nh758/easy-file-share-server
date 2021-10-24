@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha --config test/.mocharc.js test/**/*.test.js test/**/**/*.test.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "startWhenDbReady": "node app_dbReady.js"
   },
   "author": "#HACK2021",
   "license": "ISC",
