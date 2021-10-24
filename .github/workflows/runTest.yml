@@ -1,0 +1,22 @@
+name: Unit Tests
+on:
+  push:
+    branches: [master]
+jobs:
+  run-tests:
+    name: Run Unit Tests (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["14", "16"]
+    steps:
+      - name: Checkout esy-file-share-server
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install npm packages
+        run: npm i
+      - name: Run Tests
+        run: npm test
