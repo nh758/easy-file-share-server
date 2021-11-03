@@ -20,6 +20,8 @@ services:
     command: npm run startWhenDbReady
 
   db:
+    ports:
+      - "3306:3306" 
     image: mariadb
     container_name: easy-file-share-server-db
     volumes:
